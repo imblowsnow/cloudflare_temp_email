@@ -173,7 +173,7 @@ export const handleListQuery = async (
         ...params, limit, offset
     ).all();
     for (const item of results) {
-        if(item['raw']) item['parse'] = commonParseMail(item['raw'] as any);
+        if(item['raw']) item['parse'] = await commonParseMail(item['raw'] as any);
     }
     const count = offset == 0 ? await c.env.DB.prepare(
         countQuery
@@ -192,19 +192,19 @@ export const commonParseMail = async (raw_mail: string | undefined | null): Prom
         return undefined;
     }
     // TODO: WASM parse email
-    try {
-        const { parse_message_wrapper } = await import('mail-parser-wasm-worker');
+    // try {
+    //     const { parse_message_wrapper } = await import('mail-parser-wasm-worker');
 
-        const parsedEmail = parse_message_wrapper(raw_mail);
-        return {
-            sender: parsedEmail.sender || "",
-            subject: parsedEmail.subject || "",
-            text: parsedEmail.text || "",
-            html: parsedEmail.body_html || "",
-        };
-    } catch (e) {
-        console.error("Failed use mail-parser-wasm-worker to parse email", e);
-    }
+    //     const parsedEmail = parse_message_wrapper(raw_mail);
+    //     return {
+    //         sender: parsedEmail.sender || "",
+    //         subject: parsedEmail.subject || "",
+    //         text: parsedEmail.text || "",
+    //         html: parsedEmail.body_html || "",
+    //     };
+    // } catch (e) {
+    //     console.error("Failed use mail-parser-wasm-worker to parse email", e);
+    // }
     try {
         const { default: PostalMime } = await import('postal-mime');
         const parsedEmail = await PostalMime.parse(raw_mail);
