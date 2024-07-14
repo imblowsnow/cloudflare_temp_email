@@ -22,6 +22,9 @@ importers:
       hono:
         specifier: ^4.4.12
         version: 4.4.12
+      mail-parser-wasm-worker:
+        specifier: ^0.1.8
+        version: 0.1.8
       mimetext:
         specifier: ^3.0.24
         version: 3.0.24
@@ -1247,6 +1250,9 @@ packages:
 
   magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
+
+  mail-parser-wasm-worker@0.1.8:
+    resolution: {integrity: sha512-22FY4nt5fR0JHOvUSp4PflSVHfrJR+XrKLcikMOUs/hRR/aAFM+QGmQ2WjrJ5Ykwia17TfJ7TgdfN2vb2DwuqQ==}
 
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -3336,6 +3342,8 @@ snapshots:
   magic-string@0.25.9:
     dependencies:
       sourcemap-codec: 1.4.8
+
+  mail-parser-wasm-worker@0.1.8: {}
 
   merge2@1.4.1: {}
 
